@@ -57,6 +57,7 @@ Device Architecture: HAILO10H
 
 Once the runtime is up, a macOS HailoRT build talks to the stick directly, for example
 [relaxcloud-cn/hailort-macos-usb](https://github.com/relaxcloud-cn/hailort-macos-usb).
+To serve an Ollama-compatible LLM from the stick, see [docs/OLLAMA.md](docs/OLLAMA.md).
 
 ## Scope
 
