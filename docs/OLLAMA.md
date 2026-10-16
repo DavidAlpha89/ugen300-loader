@@ -26,7 +26,9 @@ hailo-ollama-macos itself needed no source changes. Two things differ from its
 `scripts/macos/build_hailo_ollama.sh`:
 
 - The script looks for the runtime in a sibling `hailort-macos/`, but the repo is
-  `hailort-macos-usb`. Set `HAILORT_ROOT=../hailort-macos-usb`.
+  `hailort-macos-usb`. Set `HAILORT_ROOT=../hailort-macos-usb`. On this Mac,
+  `~/Documents/Claude/hailort-macos` is an old 5.4.0 scratch clone with no USB build.
+  Without the variable, the script stops with "HailoRT build not found".
 - The script builds with every core. I ran its steps by hand with `--parallel 4`, since
   the Mac has 8 GB of RAM. Configuring took about 15 s, including fetching oatpp,
   eventpp and nlohmann-json. The build took about 80 s and used 172 MB of disk.
