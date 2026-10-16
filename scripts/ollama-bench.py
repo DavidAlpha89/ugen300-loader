@@ -12,6 +12,9 @@ import sys
 import time
 import urllib.request
 
+if len(sys.argv) < 3 or sys.argv[1] not in ("generate", "chat"):
+    sys.exit(__doc__)
+
 mode = sys.argv[1]
 prompt = sys.argv[2]
 num_predict = int(sys.argv[3]) if len(sys.argv) > 3 else 128
