@@ -1,0 +1,22 @@
+  ctrl IN  req=0x16 wValue=0 -> 4
+  ctrl IN  req=0x14 wValue=0 -> 3
+  ctrl IN  req=0x11 wValue=0 -> 31
+  ctrl OUT req=0x12 wValue=0x8800 wIndex=0x0624 -> 0
+  ctrl IN  req=0x15 wValue=0 -> 1
+  ctrl IN  req=0x15 wValue=0 -> 1
+  ctrl IN  req=0x15 wValue=1 -> 4
+  ctrl IN  req=0x15 wValue=1 -> 4
+  ctrl IN  req=0x15 wValue=2 -> 1
+Device:   usb bus 0 addr 2  0b05:1d6f  bcdDevice 5.15
+Product:  UGen300 USB Loader
+Serial:   H10-DEV-001
+Mode:     loader (waiting for runtime upload)
+Image:    /Users/davidallen/.local/share/ugen300/core-image-hailo-hailo10-usb-dongle.ext4 (103057408 bytes)
+Loader:   protocol 1, SKU NA, Hailo Linux build v1.10.10
+Uploaded 103057408 bytes in 0.92 s (112 MB/s)
+Waiting up to 30 s for the runtime to enumerate...
+Device:   usb bus 0 addr 2  0b05:1d6f  bcdDevice 1.00
+Product:  UGen300 USB AI Accelerator (Hailo-10H)
+Serial:   HRT-USB-001
+Mode:     runtime (HailoRT can use it)
+Runtime is up.
