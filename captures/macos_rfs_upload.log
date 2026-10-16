@@ -11,7 +11,7 @@ Device:   usb bus 0 addr 2  0b05:1d6f  bcdDevice 5.15
 Product:  UGen300 USB Loader
 Serial:   H10-DEV-001
 Mode:     loader (waiting for runtime upload)
-Image:    /Users/davidallen/.local/share/ugen300/core-image-hailo-hailo10-usb-dongle.ext4 (103057408 bytes)
+Image:    ~/.local/share/ugen300/core-image-hailo-hailo10-usb-dongle.ext4 (103057408 bytes)
 Loader:   protocol 1, SKU NA, Hailo Linux build v1.10.10
 Uploaded 103057408 bytes in 0.92 s (112 MB/s)
 Waiting up to 30 s for the runtime to enumerate...
