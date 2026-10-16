@@ -1,0 +1,4 @@
+tcpdump: listening on usbmon2, link-type USB_LINUX_MMAPPED (USB with padded Linux header), snapshot length 245824 bytes
+16 packets captured
+16 packets received by filter
+0 packets dropped by kernel

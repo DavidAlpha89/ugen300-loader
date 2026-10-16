@@ -1,0 +1,9 @@
+/ugen300-loader
+# Vendor packages and images are not ours to redistribute
+/vendor/
+*.ext4
+*.swu
+*.deb
+# Raw captures embed the vendor images; only decoded transcripts are kept
+/captures/*.pcap
+/captures/*_since
