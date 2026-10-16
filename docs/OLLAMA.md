@@ -68,12 +68,37 @@ These are Qwen3-1.7B results with greedy decoding:
 - Multi-turn chat reuses the KV cache when the new message list extends the previous one.
   A follow-up turn had a TTFT of 0.83 s, against 3.26 s for the long first turn.
 
+### Faster models
+
+The 1.5B Qwen2 and Qwen2.5 HEFs from the stock manifests were measured with the same
+setup: one server, the same 1.5 A port, three runs each of
+`ollama-bench.py generate "Explain zero trust network security in about 200 words, with concrete technical details." 200 <model>`.
+Qwen3's TTFT and decode were re-run in the same session. Its load time is the cold figure
+from above.
+
+| Model (HEF size) | Load, cold | TTFT | Decode | hailo-ollama on Pi 5 + AI HAT+ 2 ¹ |
+|---|---:|---:|---:|---:|
+| `qwen2:1.5b` (1.70 GB) | 4.76 s | 0.44 s | **6.96 tok/s** | 8.03 tok/s |
+| `qwen2.5:1.5b` (2.46 GB) | 6.93 s | 0.51 s | **5.87–5.90 tok/s** | 6.76 tok/s |
+| `qwen3` (1.7B, 2.88 GB) | 8.13 s | 0.84–0.85 s | **3.79 tok/s** | — |
+
+¹ Community numbers (schwab.sh, Jan 2026), quoted by
+[codesota](https://www.codesota.com/embedded-ai/hailo-10h-llms). Their HailoRT version isn't stated.
+
+- Qwen2-1.5B decodes 1.8× faster than Qwen3-1.7B, and Qwen2.5-1.5B 1.55× faster. The run-to-run
+  spread was 0.03 tok/s or less. `/api/chat` gave the same rates (6.93 and 5.83 tok/s), and the
+  chat template works.
+- Switching models takes longer than a cold load, because the old model is unloaded first.
+  Switching qwen2.5 → qwen2 took 7.6–7.7 s, qwen2 → qwen3 10.1 s and qwen3 → qwen2.5 9.6 s.
+
 ### Is it throttled?
 
 Probably, by about 20%, but that isn't proven. Both test setups were on USB-C ports that
 advertise 1.5 A, and HailoRT warns on every open: "The module may run in reduced-performance
 mode. For full performance, use a USB-C port that advertises 3.0A." A third-party table
 ([codesota](https://www.codesota.com/embedded-ai/hailo-10h-llms)) lists this HEF at 4.78 tok/s
-with a 620 ms TTFT. Its methodology is unknown, and Hailo doesn't publish the figure. A
-`llm_benchmark` run through a powered hub or dock that advertises 3 A downstream would settle
-it. If you have one, please open an issue with your numbers.
+with a 620 ms TTFT. Its methodology is unknown, and Hailo doesn't publish the figure. The
+Pi 5 hailo-ollama numbers in the table above come from a board that takes no USB power, and
+they are about 15% faster on both 1.5B models. That fits a power limit, but the software
+versions differ too. A `llm_benchmark` run through a powered hub or dock that advertises
+3 A downstream would settle it. If you have one, please open an issue with your numbers.
